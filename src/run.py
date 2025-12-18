@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import seaborn as sns
 import numpy as np
+import matplotlib.pyplot as plt
 
 try:
     from StringIo import StringIO
@@ -21,3 +22,8 @@ with st.expander('statistics'):
         data = json.load(uploaded_file)
         st.json(data)
 
+with st.expander("chart"):
+    fig, ax = plt.subplots()
+    sns.histplot(np.random.randn(100), ax=ax)
+
+    st.pyplot(fig)
